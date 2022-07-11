@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  invitation_list_db:
+    container_name: invitation_list_db
+    image: postgres:13.4-alpine
+    restart: unless-stopped
+    volumes:
+      -   invitation_list_db_volume:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: invitation-list
+      POSTGRES_USER: invitation-list-user
+      POSTGRES_PASSWORD: invitation-list-password
+    ports:
+      - "54321:5432"
+
+volumes:
+  invitation_list_db_volume:
